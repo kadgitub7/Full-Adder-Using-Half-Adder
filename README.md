@@ -41,10 +41,10 @@ In this project, the full adder is **implemented structurally** using **two half
 The standard full adder equations are:
 
 \[
-S = A \oplus B \oplus C_i
+$$S = A \oplus B \oplus C_i$$
 \]
 \[
-C_o = AB + AC_i + BC_i
+$$C_o = AB + AC_i + BC_i$$
 \]
 
 The design here realizes these same equations by combining the equations of two half adders.
@@ -61,10 +61,10 @@ A **half adder** is the basic building block used to construct the full adder. I
 The Boolean equations for a half adder are:
 
 \[
-S = A \oplus B
+$$S = A \oplus B$$
 \]
 \[
-C = A \cdot B
+$$C = A \cdot B$$
 \]
 
 These equations will be reused to derive the full adder implementation using two half adders.
@@ -102,7 +102,7 @@ The half adder has two inputs \(A\), \(B\) and two outputs \(S\), \(C\).
 This behavior directly corresponds to:
 
 \[
-S = A \oplus B,\quad C = A \cdot B
+$$S = A \oplus B,\quad C = A \cdot B$$
 \]
 
 ### Full Adder Truth Table
@@ -141,7 +141,7 @@ For the half adder, treat \(A\) as the row variable and \(B\) as the column vari
 **Grouping:** two single 1s (no larger groups possible), giving:
 
 \[
-S = \overline{B}A + B\overline{A} = A \oplus B
+$$S = \overline{B}A + B\overline{A} = A \oplus B$$
 \]
 
 **Carry \(C\):**
@@ -154,7 +154,7 @@ S = \overline{B}A + B\overline{A} = A \oplus B
 **Grouping:** one single 1, giving:
 
 \[
-C = A \cdot B
+$$C = A \cdot B$$
 \]
 
 These are exactly the standard half adder equations.
@@ -173,7 +173,7 @@ For the full adder, use \(A\) as the row variable and \(BC_i\) as the column var
 Observation: \(S\) is 1 when an **odd number** of \(A\), \(B\), \(C_i\) are 1. The minimal expression is:
 
 \[
-S = A \oplus B \oplus C_i
+$$S = A \oplus B \oplus C_i$$
 \]
 
 **Carry-out \(C_o\):**
@@ -186,13 +186,13 @@ S = A \oplus B \oplus C_i
 Grouping the 1s in pairs gives:
 
 \[
-C_o = AC_i + BC_i + AB
+$$C_o = AC_i + BC_i + AB$$
 \]
 
 An equivalent, factorized form that is especially useful for the half-adder construction is:
 
 \[
-C_o = AB + C_i(A \oplus B)
+$$C_o = AB + C_i(A \oplus B)$$
 \]
 
 ---
@@ -206,7 +206,7 @@ To implement a full adder using two half adders:
    - Outputs: intermediate sum \(S_1\), intermediate carry \(C_1\)
    - Equations:
      \[
-     S_1 = A \oplus B,\quad C_1 = A \cdot B
+     $$S_1 = A \oplus B,\quad C_1 = A \cdot B$$
      \]
 
 2. **Second half adder**
@@ -214,10 +214,10 @@ To implement a full adder using two half adders:
    - Outputs: final sum \(S\), intermediate carry \(C_2\)
    - Equations:
      \[
-     S = S_1 \oplus C_i = A \oplus B \oplus C_i
+     $$S = S_1 \oplus C_i = A \oplus B \oplus C_i$$
      \]
      \[
-     C_2 = S_1 \cdot C_i = C_i(A \oplus B)
+     $$C_2 = S_1 \cdot C_i = C_i(A \oplus B)$$
      \]
 
 3. **Final carry OR gate**
@@ -225,16 +225,16 @@ To implement a full adder using two half adders:
    - Output: full-adder carry-out \(C_o\)
    - Equation:
      \[
-     C_o = C_1 + C_2 = AB + C_i(A \oplus B)
+     $$C_o = C_1 + C_2 = AB + C_i(A \oplus B)$$
      \]
 
 Thus, the hierarchical construction using two half adders and one OR gate exactly implements the standard full adder equations:
 
 \[
-S = A \oplus B \oplus C_i
+$$S = A \oplus B \oplus C_i$$
 \]
 \[
-C_o = AB + AC_i + BC_i = AB + C_i(A \oplus B)
+$$C_o = AB + AC_i + BC_i = AB + C_i(A \oplus B)$$
 \]
 
 In Verilog, this is realized by instantiating the `halfAdder` module twice inside `fullAdder`, then combining the two carry outputs with an OR operation.
@@ -243,7 +243,7 @@ In Verilog, this is realized by instantiating the `halfAdder` module twice insid
 
 ## Circuit Diagram
 
-*(Place your circuit image for “full adder using two half adders” here, for example `imageAssets/fullAdderUsingHalfAdderCircuit.png` if present in the repository.)*
+![Circuit Diagram](imageAssets/fullAdderUsingHalfAdderCircuit.png)
 
 The conceptual diagram is:
 
@@ -259,7 +259,7 @@ This matches the block-diagram style typically shown in textbooks for a **full a
 
 The behavioral simulation waveform for the full adder using half adders shows inputs \(A\), \(B\), and \(C_i\) cycling through all eight combinations, while outputs \(S\) and \(C_o\) follow the full-adder truth table.
 
-*(Place your simulation waveform image here, for example `imageAssets/fullAdderUsingHalfAdderWaveform.png` if present.)*
+![Waveform Diagram](imageAssets/fullAdderUsingHalfAdderWaveform.png)
 
 Key checks:
 
