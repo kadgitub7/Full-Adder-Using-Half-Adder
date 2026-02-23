@@ -359,8 +359,8 @@ If you want to map the design to a physical FPGA:
 
 ## Project Files
 
-- `halfAdder.v` — RTL for the half adder \((A, B) \rightarrow (S, C)\).
-- `fullAdder.v` — RTL for the full adder constructed from two half adders and an OR gate \((A, B, C_i) \rightarrow (S, C_o)\).
+- `halfAdder.v` — RTL for the half adder \((A, B) -> (S, C)\).
+- `fullAdder.v` — RTL for the full adder constructed from two half adders and an OR gate \((A, B, C_i) -> (S, C_o)\).
 - `fullAdder_tb.v` — Testbench for the full adder; applies all input combinations and prints/observes the outputs.
 
 *Author: **Kadhir Ponnambalam***
